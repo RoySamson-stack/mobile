@@ -7,8 +7,13 @@ import { Image } from 'expo-image';
 import { FontAwesome } from '@expo/vector-icons';
 import { Button } from 'react-native-paper';
 import MapView from 'react-native-maps';
+import {router} from 'expo-router';
+import { useNavigation, NavigationProp } from '@react-navigation/native'; 
+// import { RootStackParamList } from '@/types'; 
+
 
 export default function HomeScreen() {
+
   const openIEBCWebsite = () => {
     Linking.openURL('https://www.iebc.or.ke');
   };
@@ -18,7 +23,7 @@ export default function HomeScreen() {
       headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
       headerImage={
         <Image
-          // source={require('@/assets/images/kenya-flag.png')}
+          source={require('@/assets/images/kenya.jpg')}
           // source={}
           style={styles.kenyaFlag}
           contentFit="contain"
@@ -37,8 +42,7 @@ export default function HomeScreen() {
         <Button 
           mode="contained" 
           style={styles.button}
-          onPress={() => {/* Navigate to check screen */}}
-        >
+          onPress={() => router.push('/(tabs)/eligibility')}>
           Check Eligibility
         </Button>
       </ThemedView>
@@ -89,7 +93,7 @@ const styles = StyleSheet.create({
     marginBottom: 24,
   },
   kenyaFlag: {
-    height: 178,
+    height: "100%",
     width: '100%',
     bottom: 0,
     position: 'absolute',

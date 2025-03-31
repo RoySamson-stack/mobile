@@ -4,6 +4,7 @@ import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import { TextInput, Button } from 'react-native-paper';
 import { FontAwesome } from '@expo/vector-icons';
+import { white } from 'react-native-paper/lib/typescript/styles/themes/v2/colors';
 
 export default function EligibilityScreen() {
   const [idNumber, setIdNumber] = useState('');
@@ -11,10 +12,8 @@ export default function EligibilityScreen() {
 
   const checkEligibility = () => {
     setLoading(true);
-    // Simulate API call
     setTimeout(() => {
       setLoading(false);
-      // Mock response - in a real app, this would come from an API
       const isEligible = Math.random() > 0.3;
       Alert.alert(
         isEligible ? 'Eligible to Vote' : 'Not Eligible',
@@ -34,9 +33,10 @@ export default function EligibilityScreen() {
           label="ID Number/Passport"
           value={idNumber}
           onChangeText={setIdNumber}
-          style={styles.input}
+          style={[styles.input, { color: 'white' }]}
           keyboardType="numeric"
           left={<TextInput.Icon icon="card-account-details" />}
+          theme={{ colors: { text: 'white', primary: 'white', placeholder: 'white' } }}
         />
 
         <Button 
@@ -75,6 +75,7 @@ const styles = StyleSheet.create({
   input: {
     marginTop: 8,
     backgroundColor: 'transparent',
+    color: 'white',
   },
   button: {
     marginTop: 16,
@@ -86,4 +87,5 @@ const styles = StyleSheet.create({
     gap: 8,
     backgroundColor: 'rgba(0, 100, 0, 0.1)',
   },
+  
 });

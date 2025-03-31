@@ -18,7 +18,7 @@ export default function AboutScreen() {
       headerBackgroundColor={{ light: '#D0D0D0', dark: '#353636' }}
       headerImage={
         <Image
-          // source={require('@/assets/images/kenya-flag.png')}
+          source={require('@/assets/images/kenya.jpg')}
           style={styles.headerImage}
           contentFit="contain"
         />
@@ -80,9 +80,6 @@ export default function AboutScreen() {
         <ThemedText>
           This app was developed to promote transparent electoral processes in Kenya.
         </ThemedText>
-        <ThemedText>
-          For support or feedback, please contact: support@kenyavoterapp.org
-        </ThemedText>
       </Collapsible>
 
       <Collapsible title="App Version">
@@ -99,7 +96,7 @@ export default function AboutScreen() {
 
 const styles = StyleSheet.create({
   headerImage: {
-    height: 200,
+    height: "100%",
     width: '100%',
     bottom: 0,
     position: 'absolute',

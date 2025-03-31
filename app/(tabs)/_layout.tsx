@@ -10,28 +10,42 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+      tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
       }}>
       <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <FontAwesome name="home" size={24} color={color} />,
-        }}
+      name="index"
+      options={{
+        title: 'Home',
+        tabBarIcon: ({ color }) => <FontAwesome name="home" size={24} color={color} />,
+      }}
       />
       <Tabs.Screen
-        name="eligibility"
-        options={{
-          title: 'Check Eligibility',
-          tabBarIcon: ({ color }) => <FontAwesome name="check-circle" size={24} color={color} />,
-        }}
+      name="eligibility"
+      options={{
+        title: 'Check Eligibility',
+        tabBarIcon: ({ color }) => <FontAwesome name="check-circle" size={24} color={color} />,
+      }}
       />
       <Tabs.Screen
-        name="stations"
-        options={{
-          title: 'Polling Stations',
-          tabBarIcon: ({ color }) => <FontAwesome name="map-marker" size={24} color={color} />,
-        }}
+      name="PollingStationsScreen"
+      options={{
+        title: 'Polling Stations',
+        tabBarIcon: ({ color }) => <FontAwesome name="map-marker" size={24} color={color} />,
+      }}
+      />
+      <Tabs.Screen
+      name="countyStats"
+      options={{
+        title: 'Statistics',
+        tabBarIcon: ({ color }) => <FontAwesome name="bar-chart" size={24} color={color} />,
+      }}
+      />
+      <Tabs.Screen
+      name="explore"
+      options={{
+        title: 'explore',
+        tabBarIcon: ({ color }) => <FontAwesome name="info-circle" size={24} color={color} />,
+      }}
       />
     </Tabs>
   );
