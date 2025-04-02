@@ -16,17 +16,22 @@ const HEADER_HEIGHT = 250;
 type Props = PropsWithChildren<{
   headerImage: ReactElement;
   headerBackgroundColor: { dark: string; light: string };
+  skipTabBarHeightCheck?: boolean; // Add this prop
 }>;
 
 export default function ParallaxScrollView({
   children,
   headerImage,
   headerBackgroundColor,
+  skipTabBarHeightCheck = false, // Default to false for backward compatibility
 }: Props) {
   const colorScheme = useColorScheme() ?? 'light';
   const scrollRef = useAnimatedRef<Animated.ScrollView>();
   const scrollOffset = useScrollViewOffset(scrollRef);
-  const bottom = useBottomTabOverflow();
+  
+  // Only call useBottomTabOverflow if not skipping the check
+  const bottom = skipTabBarHeightCheck ? 0 : useBottomTabOverflow();
+  
   const headerAnimatedStyle = useAnimatedStyle(() => {
     return {
       transform: [

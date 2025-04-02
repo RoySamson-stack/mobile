@@ -7,28 +7,27 @@ import { Image } from 'expo-image';
 import { FontAwesome } from '@expo/vector-icons';
 import { Button } from 'react-native-paper';
 import MapView from 'react-native-maps';
-import {router} from 'expo-router';
-import { useNavigation, NavigationProp } from '@react-navigation/native'; 
-// import { RootStackParamList } from '@/types'; 
-
+import { router } from 'expo-router';
+import { useNavigation, NavigationProp } from '@react-navigation/native';
+// import { RootStackParamList } from '@/types';
 
 export default function HomeScreen() {
-
   const openIEBCWebsite = () => {
     Linking.openURL('https://www.iebc.or.ke');
   };
 
   return (
-    <ParallaxScrollView
+<ParallaxScrollView
+      skipTabBarHeightCheck={true}
       headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
       headerImage={
         <Image
           source={require('@/assets/images/kenya.jpg')}
-          // source={}
           style={styles.kenyaFlag}
           contentFit="contain"
         />
-      }>
+      }
+    >
       <ThemedView style={styles.titleContainer}>
         <ThemedText type="title">Kenya Voter Eligibility</ThemedText>
         <HelloWave />
@@ -40,7 +39,7 @@ export default function HomeScreen() {
           Verify if you're eligible to vote in the next Kenyan election.
         </ThemedText>
         <Button 
-          mode="contained" 
+          mode="contained"
           style={styles.button}
           onPress={() => router.push('/(tabs)/eligibility')}>
           Check Eligibility
@@ -69,7 +68,7 @@ export default function HomeScreen() {
           Visit the Independent Electoral and Boundaries Commission website for official information.
         </ThemedText>
         <Button 
-          mode="outlined" 
+          mode="outlined"
           style={styles.button}
           onPress={openIEBCWebsite}
           icon={() => <FontAwesome name="external-link" size={16} />}

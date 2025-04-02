@@ -1,6 +1,5 @@
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
-import { Stack as RouterStack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
@@ -8,12 +7,11 @@ import 'react-native-reanimated';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { useColorScheme } from '@/hooks/useColorScheme';
-import CountyStatsScreen from '@/app/(tabs)/countyStats';
-import PollingStationsScreen from '@/app/(tabs)/PollingStationsScreen';
-import LoginScreen from '@/app/(tabs)/LoginScreen';
+import TabLayout from '@/app/(tabs)'; 
+import LoginScrreen from '@/app/(tabs)/LoginScreen';
 import SignupScreen from '@/app/(tabs)/SignupScreen';
 import AdminScreen from '@/app/(tabs)/AdminScree';
-// import DashboardScreen from '@/app/(dashboard)/dashboatabs
+
 const NativeStack = createNativeStackNavigator();
 
 SplashScreen.preventAutoHideAsync();
@@ -36,42 +34,41 @@ export default function RootLayout() {
 
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <RouterStack>
-        {/* Public routes */}
-        <RouterStack.Screen 
-          name="(tabs)/login" 
+      <NativeStack.Navigator>
+        <NativeStack.Screen 
+          name="Login" 
+          component={LoginScrreen}
           options={{ 
             headerShown: false,
             title: 'Login'
           }} 
         />
-        <RouterStack.Screen 
-          name="(tabs)/signup" 
+        <NativeStack.Screen 
+          name="Signup" 
+          component={SignupScreen}
           options={{ 
             headerShown: false,
             title: 'Sign Up'
           }} 
         />
         
-        <RouterStack.Screen 
-          name="(tabs)/dashboard" 
+        <NativeStack.Screen 
+          name="Tabs" 
+          component={TabLayout}
           options={{ 
-            headerShown: false,
-            title: 'Dashboard'
+            headerShown: false
           }} 
         />
         
-        <RouterStack.Screen 
-          name="(tabs)/admin" 
+        <NativeStack.Screen 
+          name="AdminScree" 
+          component={AdminScreen}
           options={{ 
             headerShown: true,
             title: 'Admin Panel'
           }} 
         />
-        
-        <RouterStack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <RouterStack.Screen name="+not-found" />
-      </RouterStack>
+      </NativeStack.Navigator>
       <StatusBar style={colorScheme === 'dark' ? 'light' : 'dark'} />
     </ThemeProvider>
   );

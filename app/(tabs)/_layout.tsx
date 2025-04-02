@@ -1,17 +1,32 @@
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { Link, Tabs } from 'expo-router';
 import { Pressable, useColorScheme } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+
 
 import { Colors } from '../../constants/Colors';
 
 export default function TabLayout() {
+
   const colorScheme = useColorScheme();
+  const insets = useSafeAreaInsets();
+
 
   return (
     <Tabs
-      screenOptions={{
+    screenOptions={{
       tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-      }}>
+      tabBarStyle: {
+        height: 60 + insets.bottom,
+        paddingTop: 8,
+      },
+      tabBarLabelStyle: {
+        fontSize: 12,
+        marginBottom: 4,
+      },
+      headerShown: false,
+    }}
+  >
       <Tabs.Screen
       name="index"
       options={{

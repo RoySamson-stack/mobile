@@ -13,6 +13,8 @@ export default function AboutScreen() {
     Linking.openURL('https://www.iebc.or.ke');
   };
 
+  const defaultTabBarHeight = Platform.OS === 'ios' ? 49 : 56;
+
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#D0D0D0', dark: '#353636' }}
@@ -22,7 +24,11 @@ export default function AboutScreen() {
           style={styles.headerImage}
           contentFit="contain"
         />
-      }>
+        
+      }
+      skipTabBarHeightCheck={true}
+
+      >
       <ThemedView style={styles.titleContainer}>
         <ThemedText type="title">About Kenya Voter App</ThemedText>
       </ThemedView>
