@@ -10,19 +10,11 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useColorScheme } from '@/hooks/useColorScheme';
 import CountyStatsScreen from '@/app/(tabs)/countyStats';
 import PollingStationsScreen from '@/app/(tabs)/PollingStationsScreen';
-
-
+import LoginScreen from '@/app/(tabs)/LoginScreen';
+import SignupScreen from '@/app/(tabs)/SignupScreen';
+import AdminScreen from '@/app/(tabs)/AdminScree';
+// import DashboardScreen from '@/app/(dashboard)/dashboatabs
 const NativeStack = createNativeStackNavigator();
-
-
-// function StationsStack() {
-//   return (
-//     <NativeStack.Navigator>
-//       <NativeStack.Screen name="index" component={PollingStationsScreen} options={{ headerShown: false }} />
-//       <NativeStack.Screen name="countyStats" component={CountyStatsScreen} options={{ title: 'County Details' }} />
-//     </NativeStack.Navigator>
-//   );
-// }
 
 SplashScreen.preventAutoHideAsync();
 
@@ -45,10 +37,42 @@ export default function RootLayout() {
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <RouterStack>
+        {/* Public routes */}
+        <RouterStack.Screen 
+          name="(tabs)/login" 
+          options={{ 
+            headerShown: false,
+            title: 'Login'
+          }} 
+        />
+        <RouterStack.Screen 
+          name="(tabs)/signup" 
+          options={{ 
+            headerShown: false,
+            title: 'Sign Up'
+          }} 
+        />
+        
+        <RouterStack.Screen 
+          name="(tabs)/dashboard" 
+          options={{ 
+            headerShown: false,
+            title: 'Dashboard'
+          }} 
+        />
+        
+        <RouterStack.Screen 
+          name="(tabs)/admin" 
+          options={{ 
+            headerShown: true,
+            title: 'Admin Panel'
+          }} 
+        />
+        
         <RouterStack.Screen name="(tabs)" options={{ headerShown: false }} />
         <RouterStack.Screen name="+not-found" />
       </RouterStack>
-      <StatusBar style="auto" />
+      <StatusBar style={colorScheme === 'dark' ? 'light' : 'dark'} />
     </ThemeProvider>
   );
 }
